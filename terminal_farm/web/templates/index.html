@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Farm</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="game-header">
+            <h1>Terminal Farm</h1>
+        </div>
+
+        <div class="status-bar">
+            <div class="status-item">
+                <span>Day:</span>
+                <span id="day">{{ day }}</span>
+            </div>
+            <div class="status-item">
+                <span>Time:</span>
+                <span id="time">{{ time }}</span>
+            </div>
+            <div class="status-item">
+                <span>Weather:</span>
+                <span id="weather">{{ weather }}</span>
+            </div>
+            <div class="status-item">
+                <span>Money:</span>
+                <span id="money">${{ money }}</span>
+            </div>
+            <div class="status-item">
+                <span>Stamina:</span>
+                <span id="stamina">{{ stamina }}</span>
+            </div>
+        </div>
+
+        <div class="game-content">
+            <div class="plots-container">
+                {% for plot in plots %}
+                <div class="plot" onclick="selectPlot({{ loop.index0 }})">
+                    <div class="plot-content" {% if not plot.crop %}class="empty"{% endif %}>
+                        {% if plot.crop %}
+                            <div class="crop-name">{{ plot.crop }}</div>
+                            <div class="growth-bar">
+                                <div class="growth-progress" style="width: {{ plot.growth_progress * 100 }}%"></div>
+                            </div>
+                        {% else %}
+                            <div class="empty-plot">Empty</div>
+                        {% endif %}
+                    </div>
+                    <div class="plot-number">{{ loop.index }}</div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="actions-panel">
+                <div class="crops-list">
+                    <h3>Available Crops</h3>
+                    {% for crop in available_crops %}
+                    <div class="crop-item" onclick="selectCrop('{{ crop.name }}')">
+                        <div class="crop-name">{{ crop.name }}</div>
+                        <div class="crop-details">
+                            <span>Cost: ${{ crop.cost }}</span>
+                            <span>Value: ${{ crop.value }}</span>
+                            <span>Growth: {{ crop.growth_time }}s</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="action-buttons">
+                    <button onclick="harvestCrops()">Harvest All</button>
+                    <button onclick="sleep()">Sleep</button>
+                    <button onclick="saveGame()">Save Game</button>
+                </div>
+            </div>
+
+            <div class="messages-panel" id="messages">
+                <!-- Messages will be added here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 

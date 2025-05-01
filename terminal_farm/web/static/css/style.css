@@ -1,0 +1,82 @@
+.game-header {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.farm-grid {
+    background-color: #e9ecef;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.plot {
+    height: 100px;
+    margin: 0.5rem;
+    background-color: #fff;
+    border: 2px solid #dee2e6;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.plot:hover {
+    border-color: #0d6efd;
+    transform: scale(1.05);
+}
+
+.plot-content {
+    text-align: center;
+    font-weight: bold;
+}
+
+.actions-panel {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    width: 100%;
+}
+
+.crop-selection {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
+
+#crop-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+.crop-item {
+    padding: 0.5rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.crop-item:hover {
+    background-color: #f8f9fa;
+    border-color: #0d6efd;
+} 
